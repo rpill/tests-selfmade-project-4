@@ -59,6 +59,19 @@ const app = async (projectPath, lng) => {
         pageImage: 'layout-1550.jpg',
         outputImage: 'output-1550.jpg',
         browserOptions: { launchOptions, viewport: { width: 1550, height: 1080 } },
+      }, {
+        onBeforeScreenshot: async (p) => {
+          await p.evaluate(() => {
+            const cardsContainer = document.querySelector('.content__list');
+            const videoContainer = document.querySelector('.result__video-container');
+            const preloaderTmp = document.querySelector('.preloader-template');
+
+            const nodeTmp1 = preloaderTmp.content.cloneNode(true);
+            cardsContainer.append(nodeTmp1);
+            const nodeTmp2 = preloaderTmp.content.cloneNode(true);
+            videoContainer.append(nodeTmp2);
+          });
+        },
       }),
     ]))
       .filter(Boolean)
