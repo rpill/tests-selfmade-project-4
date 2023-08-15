@@ -24,20 +24,6 @@ const posAbsolute = async (stylesPath, fileName) => {
   return errors;
 };
 
-const pseudoElements = (cssPath) => {
-  const cssCode = fs.readFileSync(cssPath, 'utf8');
-  const ast = csstree.parse(cssCode);
-
-  const found = csstree.findAll(ast, (node) => node.type === 'PseudoClassSelector' || node.type === 'PseudoElementSelector');
-
-  if (found.length < 3) {
-    return [{ id: 'countPseudoElements' }];
-  }
-
-  return [];
-};
-
 export {
   posAbsolute,
-  pseudoElements,
 };

@@ -13,7 +13,6 @@ import {
 import ru from './locales/ru.js';
 import {
   posAbsolute,
-  pseudoElements,
 } from './tests.js';
 
 const [, , PROJECT_PATH, LANG = 'ru'] = process.argv;
@@ -53,7 +52,6 @@ const app = async (projectPath, lng) => {
       lang(page, lng),
       titleEmmet(page),
       posAbsolute(path.join(projectPath, 'styles', 'style.css'), 'styles|style.css'),
-      pseudoElements(path.join(projectPath, 'styles', 'style.css')),
       compareLayout(baseUrl, {
         canonicalImage: 'layout-canonical-1550.jpg',
         pageImage: 'layout-1550.jpg',
